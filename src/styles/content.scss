@@ -1,0 +1,287 @@
+.content {
+  width: 1130px;
+  margin: auto;
+  padding-top: 48px;
+  margin-bottom: 35px;
+  padding-top: 139px;
+  .title {
+    font-size: 70px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+}
+
+.search-block {
+  width: 755px;
+  margin: auto;
+  .form-wrapper, form {
+    display: flex;
+  }
+  .search-input {
+    border: none;
+    font-size: 24px;
+    width: 480px;
+    padding: 26px 0;
+    padding-left: 10px;
+    box-sizing: border-box;
+    letter-spacing: .9px;
+    display: block;
+    padding-right: 15px;
+  }
+  .submit {
+    text-transform: uppercase;
+    font-size: 26px;
+    color: white;
+    font-weight: bold;
+    padding-left: 22px;
+    padding-right: 90px;
+    border: none;
+    border-top-right-radius: 80px;
+    transition: border-top-right-radius .3s;
+    background-color: #1eb7ee;
+    cursor: pointer;
+    &:hover {
+      border-top-right-radius: 40px;
+      transition: border-top-right-radius .3s;
+    }
+  }
+
+  .magnifier {
+    width: 60px;
+    height: 80px;
+    background: url('../images/magnifier.png') no-repeat;
+    background-color: white;
+    background-position: 22px 22px;
+  }
+}
+
+.flight-board {
+  background-color: white;
+  width: 1121px;
+  margin-top: 38px;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  .tabs {
+    display: flex;
+    position: relative;
+    .tab {
+      width: 586.5px;
+      height: 60px;
+      position: absolute;
+      background-color: #73d2f0;
+      transition: background-color .3s;
+      cursor: pointer;
+      &:hover {
+        background-color:#1eb7ee;
+        transition: background-color .3s;
+      }
+    }
+    .departures {
+      left: 0;
+      border-top-left-radius: 50px;
+      .direction {
+        text-align: end;
+        margin-right: 107px;
+        margin-top: 19px;
+        color: white;
+        font-size: 24px;
+        text-transform: uppercase;
+        &::before {
+          content: '';
+          background: url('../images/aircraftUpWhite.png') no-repeat;
+          background-size: 41px;
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          top: 15px;
+          right: 199px;
+        }
+      }
+    }
+    .departures-active {
+      border-top-right-radius: 61px;
+      z-index: 2;
+      background-color: white;
+      &:hover {
+        background: white;
+      }
+      .direction {
+        color: #1eb7ee;
+        &::before {
+          background: url('../images/aircraftUp.png') no-repeat;
+        }
+      }
+    }
+
+    .arrivals {
+      right: 0;
+      border-top-right-radius: 50px;
+      .direction {
+        margin-top: 19px;
+        font-size: 24px;
+        text-transform: uppercase;
+        margin-left: 152px;
+        color: white;
+        &::before {
+          content: '';
+          background: url('../images/aircraftDownWhite.png') no-repeat;
+          background-size: 38px;
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          top: 16px;
+          left: 89px;
+        }
+      }
+    }
+    .arrivals-active {
+      z-index: 2;
+      background-color: white;
+      border-top-left-radius: 61px;
+      &:hover {
+        background: white;
+      }
+      .direction {
+        color: #1eb7ee;
+        &::before {
+          background: url('../images/aircraftDown.png') no-repeat;
+        }
+      }
+    }
+  }
+
+  .date-block {
+    margin-top: 87px;
+    height: 100px;
+    display: flex;
+    .icon {
+      margin-left: 19px;
+      .current-date {
+        font-size: 13px;
+        font-weight: bold;
+        color: #1eb7ee;
+      }
+    }
+    .switches {
+      display: flex;
+      margin-left: 30px;
+      align-items: flex-start;
+      .switch {
+        border-bottom: 3px solid #b8b9b9;
+        width: 99px;
+        text-align: center;
+        cursor: pointer;
+        color: #b8b9b9;
+        .date {
+          font-size: 13px;
+        }
+        .day {
+          font-weight: bold;
+          text-transform: uppercase;
+          margin-top: 12px;
+          font-size: 16px;
+          margin-bottom: 9px;
+        }
+      }
+      .active {
+        color: #1eb7ee;
+      }
+    }
+  }
+
+  .flight-list {
+    thead {
+      th {
+        padding-top: 3px;
+        padding-left: 11px;
+        padding-right: 15px;
+        padding-bottom: 17px;
+        letter-spacing: .4px;
+        color: #95989A;
+      }
+      .destination {
+        padding-right: 52px;
+      }
+      .status {
+        padding-right: 182px;
+      }
+      .airline {
+        padding-right: 70px;
+      }
+      .flight {
+        padding-right: 0px;
+      }
+    }
+    tbody {
+      td {
+        padding-top: 5px;
+        padding-bottom: 15px;
+        font-size: 18px;
+        padding-left: 10px;
+      }
+      .terminal {
+        font-size: 22px;
+        border: 1px solid #63c745;
+        margin-left: 23px;
+        color: #63c745;
+        width: 39px;
+        height: 39px;
+        position: relative;
+        padding-top: 5px;
+        box-sizing: border-box;
+        border-radius: 50%;
+        text-align: center;
+        font-weight: bold;
+      }
+      tr {
+        &:hover {
+          box-shadow: 0px 5px 12px #95989A;
+          z-index: 2;
+          .flight-details {
+            opacity: 1;
+            transition: opacity .3s;
+          }
+        }
+      }
+      tr:nth-child(odd) {
+        background: rgba(0,102,135,.1);
+      }
+      .flight-details {
+        border-bottom: 1px solid #1eb7ee;
+        padding-bottom: 3px;
+        margin: 0 34.3px;
+        padding-right: 1px;
+        opacity: 0;
+        transition: opacity .3s;
+        a {
+          font-size: 18px;
+          color: #1eb7ee;
+          text-decoration: none;
+        }
+      }
+      .airline-name {
+        .details {
+          display: flex;
+          box-sizing: border-box;
+          position: relative;
+          top: 13px;
+        }
+        .logo {
+          width: 63px;
+          box-sizing: border-box;
+          img {
+            max-width: 100%;
+          }
+        }
+        .name {
+          padding-top: 9px;
+          padding-left: 5px;
+        }
+      }
+      .bla {
+        position: relative;
+      }
+    }
+  }
+}

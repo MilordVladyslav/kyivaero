@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #008ab7;
+        opacity: 0.593;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Group_687" data-name="Group 687" transform="translate(-750 -1140)">
+    <circle id="Ellipse_417" data-name="Ellipse 417" class="cls-1" cx="40" cy="40" r="40" transform="translate(750 1140)"/>
+    <g id="baseline-local_airport-24px" transform="translate(770 1160)">
+      <path id="Path_718" data-name="Path 718" class="cls-2" d="M33.667,25.333V22L20.333,13.667V4.5a2.5,2.5,0,1,0-5,0v9.167L2,22v3.333l13.333-4.167v9.167L12,32.833v2.5l5.833-1.667,5.833,1.667v-2.5l-3.333-2.5V21.167Z" transform="translate(1.333 1.333)"/>
+      <path id="Path_719" data-name="Path 719" class="cls-3" d="M0,0H40V40H0Z"/>
+    </g>
+  </g>
+</svg>
