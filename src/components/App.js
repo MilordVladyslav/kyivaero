@@ -1,17 +1,42 @@
 import React from 'react';
 import 'reset-css'
 import '../styles/index.scss'
-import Header from './header'
-import Content from './content/content'
+// import Content from './content/content'
 import Footer from './footer'
+import store from '../state-management/store'
+import { Provider } from 'react-redux';
+import { HeaderHoc, ContentHoc } from '../hoc/'
+// import FlightService from '../service/service.js'
 function App() {
+  // const myFlights = new FlightService();
+
+  // myFlights.getFlights()
+  //   .then((res) => {
+  //     console.log(res.body)
+  //     console.log(res.departure[0].term)
+  //     console.log(res.departure[0].timeDepShedule)
+  //     console.log(res.departure[0]['airportToID.name'])
+  //     let lol = Object.assign(res.body.departure[0], {})
+  //     for (let key in lol) {
+  //       console.log ('key ' + key + ' value ' + lol[key])
+  //     }
+
+  //   })
+
   return (
     <div className="App">
-      <Header></Header>
-      <Content></Content>
+      <HeaderHoc></HeaderHoc>
+      <ContentHoc></ContentHoc>
       <Footer></Footer>
     </div>
   );
 }
 
-export default App;
+const WrappedApp = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+
+export default WrappedApp;

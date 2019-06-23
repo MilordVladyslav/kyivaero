@@ -1,6 +1,6 @@
 const passengers = {
   offersBlock: {
-    img: 'src',
+    img: 'airtickets',
     title: 'Авиабилеты',
     description: 'Вы можете купить авиабилеты он-лайн',
     button: 'Купить билет'
@@ -37,7 +37,7 @@ const passengers = {
 
 const offersIev = {
   offersBlock: {
-    img: 'src',
+    img: 'airtickets',
     title: 'Авиабилеты',
     description: 'Вы можете купить авиабилеты он-лайн',
     button: 'Купить билет'
@@ -66,10 +66,10 @@ const offersIev = {
 
 const vip = {
   offersBlock: {
-    img: 'src',
-    title: 'Авиабилеты',
-    description: 'Вы можете купить авиабилеты он-лайн',
-    button: 'Купить билет'
+    img: 'vip',
+    title: 'Терминал B',
+    description: 'Скорость, комфорт, конфеденциальность',
+    button: 'ЗАКАЗАТЬ'
   },
   informationBlocks: [
     {
@@ -94,7 +94,7 @@ const vip = {
 
 const forPartners = {
   offersBlock: {
-    img: 'src',
+    img: 'airtickets',
     title: 'Авиабилеты',
     description: 'Вы можете купить авиабилеты он-лайн',
     button: 'Купить билет'

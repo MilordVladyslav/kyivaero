@@ -1,82 +1,15 @@
 import React from 'react'
 import logo from '../../images/logo.png'
-import airtickets from '../../images/airtickets.jpg'
 import Popup from './popup'
-import {
-  passengers,
-  offersIev,
-  vip,
-  forPartners
-} from './popupParams'
-
 class Header extends React.Component {
-  state = {
-    menuItemActive: '',
-    currentLanguage: 'EN',
-    languageItemActive: false,
-    languagesList: ['RU', 'EN', 'UA'],
-    popupInformation: ''
-  }
-  menuItemActive (arg) {
-    this.setState({
-      menuItemActive: arg === this.state.menuItemActive ? '' : arg
-    }, () => {
-      this.popupInformation()
-    })
-  }
 
   isActiveMenuItem (arg) {
-    if (this.state.menuItemActive === arg) {
-      return arg === this.state.menuItemActive ? 'menu-item-active' : 'default'
-    }
-  }
-  popupInformation () {
-    console.log(this.state.menuItemActive)
-      switch (this.state.menuItemActive) {
-        case "Пассажирам":
-        this.setState({
-          popupInformation: passengers
-        })
-        break;
-        case "Услуги IEV":
-        this.setState({
-          popupInformation: offersIev
-        })
-        break;
-        case "VIP":
-        this.setState({
-          popupInformation: vip
-        }, function () {
-          console.log(this.state.popupInformation)
-        }
-        )
-        break;
-        case "Партнерам":
-        this.setState({
-          popupInformation: forPartners
-        })
-        break;
-        default: {
-          console.log('wow')
-        }
-      }
-  }
-
-  changeLanguage (lang) {
-    this.setState({
-      currentLanguage: lang,
-      languageItemActive: false
-    })
-  }
-  openLanguageList () {
-    this.setState({
-      languageItemActive: !this.state.languageItemActive
-    })
+      return arg === this.props.headerState.menuItemActive ? 'menu-item-active' : 'default'
   }
 
   render() {
-    const languages = this.state.languagesList.map((lang, index) => {
-      if(lang !== this.state.currentLanguage) {
+    const languages = this.props.headerState.languagesList.map((lang, index) => {
+      if(lang !== this.props.headerState.currentLanguage) {
         return (
           <li onClick={() => this.changeLanguage(lang)} key={index}>{lang}</li>
         )
@@ -84,14 +17,11 @@ class Header extends React.Component {
     })
     const menuItems = ['Пассажирам', 'Услуги IEV', "VIP", "Партнерам"].map((item, index) => {
       return (
-        <li className={this.isActiveMenuItem(item)} onClick={() => this.menuItemActive(item)} key={index}>{item}</li>
+        <li className={this.isActiveMenuItem(item)} onClick={() => this.props.toggleMenuItem(item)} key={index}>{item}</li>
       )
     })
-    const headerClasses = this.state.menuItemActive ? 'header' : 'header shadow'
-    const languageItems = this.state.languageItemActive ? 'language-select-active' : 'hided'
-    const popup = this.state.popupInformation
-      ? <Popup information = {this.state.popupInformation} menuItemActive = {this.state.menuItemActive}></Popup>
-      : ''
+    const headerClasses = this.props.headerState.menuItemActive ? 'header' : 'header shadow'
+    const languageItems = this.props.headerState.languageItemActive ? 'language-select-active' : 'hided'
     return (
       <div>
         <header className={headerClasses}>
@@ -104,8 +34,8 @@ class Header extends React.Component {
                   {menuItems}
                 </ul>
               </div>
-              <div className="language" onClick={() => this.openLanguageList()}>
-                <span className="currentLanguage">{this.state.currentLanguage}</span>
+              <div className="language" onClick={() => this.props.toggleLanguagePopup()}>
+                <span className="currentLanguage">{this.props.headerState.currentLanguage}</span>
                 <div className={languageItems}>
                   <ul>
                     {languages}
@@ -114,7 +44,7 @@ class Header extends React.Component {
               </div>
             </div>
         </header>
-        {popup}
+        {<Popup information = {this.props.headerState.popupInformation} menuItemActive = {this.props.headerState.menuItemActive} ></Popup>}
       </div>
     )
   }

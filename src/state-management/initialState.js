@@ -5,7 +5,11 @@ const initialState = {
     currentLanguage: 'EN',
     languageItemActive: false,
     languagesList: ['RU', 'EN', 'UA'],
-    popupInformation: ''
+    popupInformation: '',
+    isActiveMenuItem: ''
+  },
+  content: {
+    value: 'content nothing'
   }
 }
 
