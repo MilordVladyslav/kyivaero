@@ -24,24 +24,18 @@ class Content extends React.Component {
   }
   render () {
     // console.log(Array.isArray(this.props.items)
-    // console.log(Array.isArray(this.props.items))
-    // console.log(this.props.items)
-    // if(this.state[0]) {
-    //   // console.log(this.state)
-    //   let items = []
-    //   for(let key in this.state) {
-    //     items.push(this.state[key])
-    //   }
-    //   // console.log(items[0]['term'])
-    // }
+    if(this.props.items) {
+      return (
+        <div className="content">
+          <Search></Search>
+          <FlightBoard arrivals={this.props.arrivals} items={this.props.items}></FlightBoard>
+        </div>
+      )
+    }
     return (
-      <div className="content">
-
-        <Search></Search>
-        <FlightBoard arrivals={this.props.arrivals} items={this.props.items}></FlightBoard>
-
-      </div>
+      <div className="content"></div>
     )
+
   }
 }
 

@@ -204,7 +204,7 @@
         padding-right: 52px;
       }
       .status {
-        padding-right: 182px;
+        padding-right: 100px;
       }
       .airline {
         padding-right: 70px;
@@ -216,7 +216,7 @@
     tbody {
       td {
         padding-top: 5px;
-        padding-bottom: 15px;
+        padding-bottom: 8px;
         font-size: 18px;
         padding-left: 10px;
       }
@@ -261,6 +261,10 @@
         }
       }
       .airline-name {
+        padding-bottom: 10px;
+        li {
+          padding-right: 72px;
+        }
         .details {
           display: flex;
           box-sizing: border-box;
@@ -281,6 +285,11 @@
       }
       .bla {
         position: relative;
+      }
+      .flight-name {
+        li {
+          padding-bottom: 22px;
+        }
       }
     }
   }

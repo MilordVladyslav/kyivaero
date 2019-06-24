@@ -1,6 +1,6 @@
 import React from 'react'
 import datePicker from '../../images/date-picker.png'
-import logoAirline from '../../images/logo-airline.png'
+import FlightItems from './flightItems'
 import {
   Route,
   Link,
@@ -63,50 +63,5 @@ class FlightBoard extends React.Component {
   }
 }
 
-const FlightItems = (props) => {
-  // const prop = {...props[0]}
-  const mydate = new Date(1532450032)
-  // console.log(mydate)
-  // console.log(props)
-  return (
-    // <ul>
-    // {props.items.map((item) => (
-    //     <li key={item.id}>
-    //         {item.label}
-    //     </li>
-    // ))}
-    // </ul>
-    <tr>
-      <td><div className="terminal">{'A'}</div></td>
-      <td>2:40</td>
-      <td>Анкара</td>
-      <td>Вылетел в 3:01 </td>
-      <td className="bla">
-        <ul className="airline-name">
-          <li>
-            <div className="details">
-              <div className="logo">
-                <img src={logoAirline} alt="logo"></img>
-              </div>
-              <p className="name">Pegasus</p>
-            </div>
-          </li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>
-            PC1723
-          </li>
-        </ul>
-      </td>
-      <td>
-        <div className="flight-details">
-          <a href="/">Детали рейса</a>
-        </div>
-      </td>
-    </tr>
-  )
-}
 
 export default FlightBoard
