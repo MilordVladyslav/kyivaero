@@ -10,10 +10,7 @@ import {
 
 const mapDispatchToContentProps = (dispatch) => (
   {
-    arrivals: (value) => (
-      dispatch(arrivalsActionCreator(value))
-    ),
-    departures: (value) => (
+    getApiData: (value) => (
       // dispatch(departuresActionCreator(value))
       dispatch(itemsFetchData(value))
     ),
@@ -22,9 +19,6 @@ const mapDispatchToContentProps = (dispatch) => (
 )
 
 const mapStateToContentProps = (state) => {
-  const contentState = {
-    ...state.contentReducer.filteredItems
-  }
   return {
     items: state.contentReducer.filteredItems
   }

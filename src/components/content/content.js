@@ -1,36 +1,37 @@
 import React from 'react'
 import FlightBoard from './flightBoard'
 import Search from './search'
-
+import {Route} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 class Content extends React.Component {
   state = {
-    items: []
+    newParams: ''
   }
 
   componentDidMount () {
-    this.props.departures()
-    setTimeout(() => {
-      this.setState({
-        ...this.props
-      })
-    }, 1000)
+    this.props.getApiData('departures')
   }
-  componentDidUpdate (prevProps, prevState) {
-    if(prevProps !== this.props) {
-      this.setState({
-        items: this.props
-      })
-    }
+  getDepartures = () => {
+    return this.props.getApiData('departures')
+  }
+  getArrivals = () => {
+    this.props.getApiData('arrivals')
+  }
+  applyParamsChanges = (newParams) => {
+    this.setState({
+      newParams
+    })
   }
   render () {
-    // console.log(Array.isArray(this.props.items)
     if(this.props.items) {
       return (
+        <Router>
         <div className="content">
-          <Search></Search>
-          <FlightBoard arrivals={this.props.arrivals} items={this.props.items}></FlightBoard>
+          <Search applyParamsChanges={this.applyParamsChanges}></Search>
+          <FlightBoard items={this.props.items} departures = {this.getDepartures}  arrivals = {this.getArrivals} urlParams = {this.state.newParams}></FlightBoard>
         </div>
-      )
+        </Router>
+      );
     }
     return (
       <div className="content"></div>

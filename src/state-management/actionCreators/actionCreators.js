@@ -68,13 +68,17 @@ function searchActionCreator (value) {
   }
 }
 
-function itemsFetchData() {
+function itemsFetchData(nextAction) {
   const flightService = new FlightService()
   return (dispatch) => {
     flightService
     .getFlights()
     .then(res => {
-      dispatch(departuresActionCreator(res))
+      if(nextAction === 'departures') {
+        dispatch(departuresActionCreator(res))
+      } else {
+        dispatch(arrivalsActionCreator(res))
+      }
     })
   }
 }
@@ -109,3 +113,5 @@ export {
   searchActionCreator,
   selectLanguageItemActionCreator
 }
+
+

@@ -1,37 +1,13 @@
 function contentReducer (state = {}, action) {
+  let filteredItems = null
   switch(action.type) {
     case "ARRIVAL":
-      console.log(action.value)
-      return state
-    case "DEPARTURE":
-      const items = action.value.body.departure.filter((item) => {
-        return item.codeShareData[0].airline.en.showOnSite
-      })
-      let filteredItems = []
-      let airlineItems = []
-      let flightItems = []
-      for (let key in items) {
-        const itemskey = items[key]
-        for(let i = 0; i < items[key]['codeShareData'].length; i++) {
-          airlineItems.push(
-            items[key]['codeShareData'][i]['airline']['en']['name']
-          )
-
-          flightItems.push(
-            items[key]['codeShareData'][i]['codeShare']
-          )
-        }
-        filteredItems.push({
-          term: items[key]['term'],
-          timeDepShedule: items[key]['timeDepShedule'].slice(11, 16),
-          destination: items[key]['airportToID.city_ru'],
-          status: items[key]['status'],
-          airline: airlineItems,
-          flight: flightItems
-        })
-        flightItems = []
-        airlineItems = []
+      filteredItems = prepareItems (action.value.body.arrival, 'timeArrShedule', 'airportFromID.name')
+      return {
+        filteredItems
       }
+    case "DEPARTURE":
+      filteredItems = prepareItems (action.value.body.departure, 'timeDepShedule', 'airportToID.name')
       return {
         filteredItems
       }
@@ -48,4 +24,39 @@ function contentReducer (state = {}, action) {
     }
   }
 }
+
+
+function prepareItems (actionValue, time, airportName) {
+  let items = []
+  items = actionValue.filter((item) => {
+    return item.codeShareData[0].airline.en.showOnSite
+  })
+  let filteredItems = []
+  let airlineItems = []
+  let flightItems = []
+  for (let key in items) {
+    for(let i = 0; i < items[key]['codeShareData'].length; i++) {
+      airlineItems.push(
+        items[key]['codeShareData'][i]['airline']['en']['name']
+      )
+
+      flightItems.push(
+        items[key]['codeShareData'][i]['codeShare']
+      )
+    }
+    filteredItems.push({
+      term: items[key]['term'],
+      [time]: items[key][time].slice(11, 16),
+      destination: items[key][airportName],
+      status: items[key]['status'],
+      airline: airlineItems,
+      flight: flightItems
+    })
+    flightItems = []
+    airlineItems = []
+  }
+  return filteredItems
+}
+
+
 export default contentReducer

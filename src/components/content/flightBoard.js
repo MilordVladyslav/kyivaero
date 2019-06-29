@@ -8,14 +8,15 @@ import {
 } from 'react-router-dom'
 class FlightBoard extends React.Component {
   render () {
+    console.log(window.location)
     return (
       <div className="flight-board">
         <div className="tabs">
           <div className="tab departures departures-active">
-            <Link to='/departure'><p className="direction">Вылет</p></Link>
+            <Link to={`/departures/${this.props.urlParams}`}><p className="direction" onClick={this.props.departures}>Вылет</p></Link>
           </div>
-          <div className="tab arrivals" onClick={() => this.props.arrivals('arrivals')}>
-            <Link to='/arrivals'><p className="direction">Прилет</p></Link>
+          <div className="tab arrivals" onClick={this.props.arrivals}>
+            <Link to={`/arrivals/${this.props.urlParams}`}><p className="direction">Прилет</p></Link>
           </div>
         </div>
         <div className="date-block">
@@ -52,8 +53,34 @@ class FlightBoard extends React.Component {
             </thead>
             <tbody>
             <Switch>
-              <Route path='/departure' component={() => FlightItems(this.props.items)} />
-              <Route path='/' component={() => FlightItems(this.props.items)} />
+            <Route
+                path={`/`}
+                render={({ match }) => {
+                  return (
+                    <Route component={() => FlightItems(this.props.items)} />
+                  );
+                }}
+              />
+              <Route
+                path={`departures${this.props.urlParams}`}
+
+                render={({ match }) => {
+                  console.log(window.location.search)
+                  return (
+                    <Route path='/departures' component={() => FlightItems(this.props.items)} />
+                  );
+                }}
+              />
+              <Route
+                path={`/arrivals${this.props.urlParams}`}
+                render={({ match }) => {
+                  return (
+                    <Route component={() => FlightItems(this.props.items)} />
+                  );
+                }}
+              />
+              {/* <Route path='/departure' component={() => FlightItems(this.props.items)} />
+              <Route path='/' component={() => FlightItems(this.props.items)} /> */}
             </Switch>
             </tbody>
           </table>
