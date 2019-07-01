@@ -10,7 +10,8 @@ const initialState = {
   },
   content: {
     value: 'content nothing'
-  }
+  },
+  mark: 'departure'
 }
 
 export default initialState

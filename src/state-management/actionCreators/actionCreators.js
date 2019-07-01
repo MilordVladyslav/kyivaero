@@ -1,4 +1,5 @@
 import FlightService from '../../service/service'
+import initialState from '../initialState'
 function toggleMenuItemActionCreator (value) {
   return {
     type: 'TOGGLE_MENU_ITEM',
@@ -68,16 +69,20 @@ function searchActionCreator (value) {
   }
 }
 
-function itemsFetchData(nextAction) {
-  const flightService = new FlightService()
+function itemsFetchData(nextAction, date, param) {
+  console.log(date)
+  console.log(nextAction)
+  console.log(param)
+  const flightService = new FlightService(date)
   return (dispatch) => {
     flightService
     .getFlights()
     .then(res => {
-      if(nextAction === 'departures') {
-        dispatch(departuresActionCreator(res))
+      initialState.content.flights = res.body
+      if(nextAction === 'departure') {
+        dispatch(departuresActionCreator(param))
       } else {
-        dispatch(arrivalsActionCreator(res))
+        dispatch(arrivalsActionCreator(param))
       }
     })
   }

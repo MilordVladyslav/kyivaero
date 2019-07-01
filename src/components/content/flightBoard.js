@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 class FlightBoard extends React.Component {
   render () {
-    console.log(window.location)
     return (
       <div className="flight-board">
         <div className="tabs">
@@ -25,15 +24,15 @@ class FlightBoard extends React.Component {
             <img src={datePicker} alt=""></img>
           </div>
           <div className="switches">
-            <div className="switch">
+            <div className="switch" onClick={() => this.props.flightsAccordingToDate(-1)}>
               <p className="date">01/06</p>
               <p className="day">Вчера</p>
             </div>
-            <div className="switch">
+            <div className="switch" onClick={() => this.props.flightsAccordingToDate()}>
               <p className="date">02/06</p>
               <p className="day">Сегодня</p>
             </div>
-            <div className="switch">
+            <div className="switch" onClick={() => this.props.flightsAccordingToDate(1)}>
               <p className="date">03/06</p>
               <p className="day">Завтра</p>
             </div>
@@ -65,7 +64,6 @@ class FlightBoard extends React.Component {
                 path={`departures${this.props.urlParams}`}
 
                 render={({ match }) => {
-                  console.log(window.location.search)
                   return (
                     <Route path='/departures' component={() => FlightItems(this.props.items)} />
                   );

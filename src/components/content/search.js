@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import urlParamsMaker from '../../helpers/urlMaker'
 class Search extends React.Component {
   state = {
@@ -13,9 +13,15 @@ class Search extends React.Component {
   }
   submitHandler = (e) => {
     e.preventDefault()
-    this.urlParamsMaker.addParam({
+    this.props.urlParamsMaker.addParam({
       search: this.state.value
     })
+    this.props.getContentWithParams(
+      [
+        this.props.urlParamsMaker.params,
+        this.props.urlParamsMaker.urlParams
+      ]
+    )
   }
   render () {
     return (
@@ -28,7 +34,6 @@ class Search extends React.Component {
             <button type="submit" className="submit">Найти</button>
           </form>
         </div>
-        <button><Link to={`/first/`}><p className="direction">first</p></Link></button>
       </div>
       )
   }

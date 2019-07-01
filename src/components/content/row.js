@@ -5,7 +5,7 @@ const Row = (props) => {
   return (
   <tr>
     <td><div className="terminal">{props.item.term}</div></td>
-    <td>{props.item.timeDepShedule}</td>
+    <td>{props.item.timeDepShedule || props.item.timeArrShedule}</td>
     <td>{props.item.destination}</td>
     <td>{props.item.status} </td>
     <td className="bla">

@@ -18,7 +18,6 @@ function headerReducer (state = initialState, action) {
         }
       }
     case "TOGGLE_LANGUAGE_ITEM":
-      console.log('toggle')
       return {
         ...state,
         header: {
@@ -27,6 +26,14 @@ function headerReducer (state = initialState, action) {
         }
       }
     case "SELECT_LANGUAGE":
+    console.log(action.value)
+    return {
+      ...state,
+      header: {
+        ...state.header,
+        currentLanguage: action.value
+      }
+    }
       break;
     default: {
       return state;

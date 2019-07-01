@@ -1,7 +1,10 @@
 export default class FlightService {
-  __apiBase = `https://api.iev.aero/api/flights/23-06-2019`
+  constructor(date) {
+    this.date = date
+  }
+  __apiBase = `https://api.iev.aero/api/flights/`
   getFlights = async () => {
-    const res = await fetch(`https://api.iev.aero/api/flights/23-06-2019`);
+    const res = await fetch(`https://api.iev.aero/api/flights/${this.date}`);
     return res.json()
   }
 }

@@ -6,6 +6,9 @@ class Header extends React.Component {
   isActiveMenuItem (arg) {
       return arg === this.props.headerState.menuItemActive ? 'menu-item-active' : 'default'
   }
+  changeLanguage = (lang) => {
+    this.props.selectLanguage(lang)
+  }
 
   render() {
     const languages = this.props.headerState.languagesList.map((lang, index) => {

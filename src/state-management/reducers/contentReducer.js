@@ -1,16 +1,48 @@
-function contentReducer (state = {}, action) {
-  let filteredItems = null
+import initialState from "../initialState";
+
+function contentReducer (state = initialState, action) {
+  let filteredItems = []
+  let items = []
   switch(action.type) {
     case "ARRIVAL":
-      filteredItems = prepareItems (action.value.body.arrival, 'timeArrShedule', 'airportFromID.name')
+      if(!!action.value) {
+        items = prepareItems (state.content.flights.arrival, 'timeArrShedule', 'airportFromID.name')
+        items.forEach(object => {
+          object['flight'].forEach(keyValue => {
+            if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
+              filteredItems.push(object)
+            }
+          })
+        });
+      } else {
+        filteredItems = prepareItems (state.content.flights.arrival, 'timeArrShedule', 'airportFromID.name')
+      }
       return {
-        filteredItems
+        ...state,
+        filteredItems,
+        mark: 'arrival'
       }
     case "DEPARTURE":
-      filteredItems = prepareItems (action.value.body.departure, 'timeDepShedule', 'airportToID.name')
-      return {
-        filteredItems
+      if(!!action.value) {
+        items = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
+        items.forEach(object => {
+          object['flight'].forEach(keyValue => {
+            if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
+              filteredItems.push(object)
+            }
+          })
+        });
+
+      } else {
+        filteredItems = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
       }
+      return{
+        ...state,
+        filteredItems,
+        mark: 'departure'
+      }
+
+
     case "YESTERDAY":
       return state
     case "TODAY":
@@ -18,7 +50,33 @@ function contentReducer (state = {}, action) {
     case "TOMORROW":
       return state
     case "SEARCH":
-      return state
+      let mark = state.mark
+      // filteredItems = [];
+      // items = [];
+      if(mark === 'departure') {
+        items = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
+        items.forEach(object => {
+          object['flight'].forEach(keyValue => {
+            if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
+              filteredItems.push(object)
+            }
+          })
+        });
+      } else if(mark === 'arrival') {
+        items = prepareItems (state.content.flights.arrival, 'timeArrShedule', 'airportFromID.name')
+        items.forEach(object => {
+          object['flight'].forEach(keyValue => {
+            if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
+              filteredItems.push(object)
+            }
+          })
+        });
+      }
+
+      return{
+        ...state,
+        filteredItems
+      }
     default: {
       return state
     }
@@ -28,8 +86,14 @@ function contentReducer (state = {}, action) {
 
 function prepareItems (actionValue, time, airportName) {
   let items = []
-  items = actionValue.filter((item) => {
-    return item.codeShareData[0].airline.en.showOnSite
+
+  items = actionValue.filter((item, index) => {
+    try {
+      return item.codeShareData[0].airline.en.showOnSite
+    }
+    catch(err) {
+      return false
+    }
   })
   let filteredItems = []
   let airlineItems = []

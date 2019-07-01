@@ -4,23 +4,33 @@ import {
   itemsFetchData,
   toggleLanguageItemActionCreator,
   arrivalsActionCreator,
-  // departuresActionCreator,
-  selectLanguageItemActionCreator
+  searchActionCreator,
+  selectLanguageItemActionCreator,
+  departuresActionCreator
 } from '../actionCreators'
 
 const mapDispatchToContentProps = (dispatch) => (
   {
-    getApiData: (value) => (
-      // dispatch(departuresActionCreator(value))
-      dispatch(itemsFetchData(value))
+    getApiData: (direction, date, params) => (
+      dispatch(itemsFetchData(direction, date, params))
     ),
+    departures: (value) => (
+      dispatch(departuresActionCreator(value))
+    ),
+    arrivals: (value) => (
+      dispatch(arrivalsActionCreator(value))
+    ),
+    getFlightsWithParams: (value) => {
+      dispatch(searchActionCreator(value))
+    },
     dispatch: dispatch
   }
 )
 
 const mapStateToContentProps = (state) => {
   return {
-    items: state.contentReducer.filteredItems
+    items: state.contentReducer.filteredItems,
+    mark: state.contentReducer.mark
   }
 }
 
