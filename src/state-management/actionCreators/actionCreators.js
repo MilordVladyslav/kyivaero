@@ -70,9 +70,6 @@ function searchActionCreator (value) {
 }
 
 function itemsFetchData(nextAction, date, param) {
-  console.log(date)
-  console.log(nextAction)
-  console.log(param)
   const flightService = new FlightService(date)
   return (dispatch) => {
     flightService

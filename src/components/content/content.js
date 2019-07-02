@@ -12,13 +12,23 @@ class Content extends React.Component {
   }
   urlParamsMaker = new urlParamsMaker ();
   componentDidMount () {
-    // console.log(this.props.mark)
     this.props.getApiData(this.props.mark, this.formateDate())
+  }
+  swithcesDates = (arg) => {
+    let date = new Date();
+    if(arg) {
+      date.setDate(date.getDate() + arg)
+    }
+    let day = date.getDate()
+    let month = date.getMonth()
+    day = day.toString().length === 1 ? `0${day}` : day
+    month = month.toString().length === 1 ? `0${month}` : month
+    return `${day}/${month}`
   }
   formateDate = (arg) => {
     let date = new Date();
     if(arg) {
-      arg < 0 ? date.setDate(date.getDate() + arg) : date.setDate(date.getDate() + arg);
+      date.setDate(date.getDate() + arg)
     }
     let day = date.getDate();
     let month = date.getMonth();
@@ -29,7 +39,6 @@ class Content extends React.Component {
   }
   getDepartures = () => {
     let search = ''
-    console.log(this.state.newParams)
     try{
       search = this.state.newParams.find((item) => (
         item['search']
@@ -46,7 +55,6 @@ class Content extends React.Component {
   }
   getArrivals = () => {
     let search = ''
-    console.log(this.state.newParams)
     try{
       search = this.state.newParams.find((item) => (
         item['search']
@@ -71,7 +79,6 @@ class Content extends React.Component {
     // console.log(this.formateDate(arg))
     // console.log(this.state.newParams)
     let search = ''
-    console.log(this.state.newParams)
     try{
       search = this.state.newParams.find((item) => (
         item['search']
@@ -82,7 +89,10 @@ class Content extends React.Component {
     this.urlParamsMaker.addParam({
       date: this.formateDate(arg)
     })
-    console.log(search)
+    console.log(this.urlParamsMaker.urlParams)
+    this.setState({
+      newParamsView: this.urlParamsMaker.urlParams
+    })
     if (search) {
       this.props.getApiData(this.props.mark, this.formateDate(arg), search)
     } else this.props.getApiData(this.props.mark, this.formateDate(arg))
@@ -108,7 +118,7 @@ class Content extends React.Component {
         <Router>
         <div className="content">
           <Search applyParamsChanges={this.applyParamsChanges} urlParamsMaker={this.urlParamsMaker} getContentWithParams={this.getContentWithParams}></Search>
-          <FlightBoard items={this.props.items} departures = {this.getDepartures} flightsAccordingToDate = {this.flightsAccordingToDate} arrivals = {this.getArrivals} urlParams = {this.state.newParamsView}></FlightBoard>
+          <FlightBoard items={this.props.items} departures = {this.getDepartures} switchDateValue = {this.swithcesDates} flightsAccordingToDate = {this.flightsAccordingToDate} arrivals = {this.getArrivals} urlParams = {this.state.newParamsView}></FlightBoard>
         </div>
         </Router>
       );

@@ -29,6 +29,9 @@
     display: block;
     padding-right: 15px;
   }
+  .search-input:focus {
+    outline: none;
+  }
   .submit {
     text-transform: uppercase;
     font-size: 26px;
@@ -48,11 +51,11 @@
   }
 
   .magnifier {
-    width: 60px;
+    width: 80px;
     height: 80px;
     background: url('../images/magnifier.png') no-repeat;
     background-color: white;
-    background-position: 22px 22px;
+    background-position: 20px 22px;
   }
 }
 
@@ -153,7 +156,6 @@
 
   .date-block {
     margin-top: 87px;
-    height: 100px;
     display: flex;
     .icon {
       margin-left: 19px;
@@ -165,11 +167,13 @@
     }
     .switches {
       display: flex;
+      width: 297px;
+      flex-wrap: wrap;
       margin-left: 30px;
       align-items: flex-start;
       .switch {
-        border-bottom: 3px solid #b8b9b9;
         width: 99px;
+        flex-shrink: 0;
         text-align: center;
         cursor: pointer;
         color: #b8b9b9;
@@ -186,6 +190,26 @@
       }
       .active {
         color: #1eb7ee;
+      }
+      .line-bottom {
+        width: 100%;
+        height: 3px;
+        background: #b8b9b9;
+      }
+      .status-line {
+        background:#1eb7ee;
+        width: 33.5%;
+        height: 3px;
+        transition: transform .2s linear;
+      }
+      .left {
+        transform: translateX(0);
+      }
+      .center {
+        transform: translateX(100%);
+      }
+      .right {
+        transform: translateX(200%);
       }
     }
   }
