@@ -8,6 +8,9 @@ function contentReducer (state = initialState, action) {
       if(!!action.value) {
         items = prepareItems (state.content.flights.arrival, 'timeArrShedule', 'airportFromID.name')
         items.forEach(object => {
+          if(object['destination'].toLowerCase().includes(action.value['search'].toLowerCase())) {
+            filteredItems.push(object)
+          }
           object['flight'].forEach(keyValue => {
             if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
               filteredItems.push(object)
@@ -26,13 +29,15 @@ function contentReducer (state = initialState, action) {
       if(!!action.value) {
         items = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
         items.forEach(object => {
+          if(object['destination'].toLowerCase().includes(action.value['search'].toLowerCase())) {
+            filteredItems.push(object)
+          }
           object['flight'].forEach(keyValue => {
             if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
               filteredItems.push(object)
             }
           })
         });
-
       } else {
         filteredItems = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
       }
@@ -56,6 +61,9 @@ function contentReducer (state = initialState, action) {
       if(mark === 'departure') {
         items = prepareItems (state.content.flights.departure, 'timeDepShedule', 'airportToID.name')
         items.forEach(object => {
+          if(object['destination'].toLowerCase().includes(action.value['search'].toLowerCase())) {
+            filteredItems.push(object)
+          }
           object['flight'].forEach(keyValue => {
             if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
               filteredItems.push(object)
@@ -65,6 +73,9 @@ function contentReducer (state = initialState, action) {
       } else if(mark === 'arrival') {
         items = prepareItems (state.content.flights.arrival, 'timeArrShedule', 'airportFromID.name')
         items.forEach(object => {
+          if(object['destination'].toLowerCase().includes(action.value['search'].toLowerCase())) {
+            filteredItems.push(object)
+          }
           object['flight'].forEach(keyValue => {
             if(keyValue.toLowerCase().includes(action.value['search'].toLowerCase())) {
               filteredItems.push(object)

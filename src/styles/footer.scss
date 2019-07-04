@@ -49,6 +49,9 @@ footer {
       display: flex;
       margin-top: 10px;
       margin-left: 7px;
+      a {
+        border: none;
+      }
       li{
         margin-right: 50px;
         &:last-child {

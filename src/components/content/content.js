@@ -4,6 +4,7 @@ import Search from './search'
 import {Route} from 'react-router-dom'
 import { BrowserRouter as Router } from 'react-router-dom';
 import urlParamsMaker from '../../helpers/urlMaker'
+import Preloader from './preloader'
 class Content extends React.Component {
   state = {
     newParamsView: '',
@@ -34,7 +35,8 @@ class Content extends React.Component {
     let month = date.getMonth();
     let year = date.getFullYear();
     day = day.toString().length === 1 ? `0${day}` : day
-    month = month.toString().length === 1 ? `0${month}` : month
+    month = month.toString().length === 1 ? `0${month+1}` : month+1
+    console.log(`${day}-${month}-${year}`)
     return `${day}-${month}-${year}`
   }
   getDepartures = () => {
@@ -47,7 +49,6 @@ class Content extends React.Component {
       search = false
     }
     if(search) {
-      // console.log(this.state.newParams)
       this.props.departures(search)
     } else {
       this.props.departures()
@@ -63,7 +64,6 @@ class Content extends React.Component {
       search = false
     }
     if(search) {
-      // console.log(this.state.newParams)
       this.props.arrivals(search)
     } else {
       this.props.arrivals()
@@ -76,8 +76,6 @@ class Content extends React.Component {
     })
   }
   flightsAccordingToDate = (arg) => {
-    // console.log(this.formateDate(arg))
-    // console.log(this.state.newParams)
     let search = ''
     try{
       search = this.state.newParams.find((item) => (
@@ -89,22 +87,19 @@ class Content extends React.Component {
     this.urlParamsMaker.addParam({
       date: this.formateDate(arg)
     })
-    console.log(this.urlParamsMaker.urlParams)
+
     this.setState({
       newParamsView: this.urlParamsMaker.urlParams
     })
     if (search) {
       this.props.getApiData(this.props.mark, this.formateDate(arg), search)
     } else this.props.getApiData(this.props.mark, this.formateDate(arg))
-    // ? this.props.getApiData(this.props.mark, this.formateDate(arg), this.state.newParams)
-    // : this.props.getApiData(this.props.mark, this.formateDate(arg))
   }
   getContentWithParams = (newParams) => {
     let key = Object.keys(newParams)[0]
     let search = newParams[0].find((item) => (
       item['search']
     ))
-      // console.log(newParams[0])
       if(search){
         this.props.getFlightsWithParams(search)
       } else this.props.mark === 'departure'
@@ -115,16 +110,22 @@ class Content extends React.Component {
   render () {
     if(this.props.items) {
       return (
-        <Router>
         <div className="content">
           <Search applyParamsChanges={this.applyParamsChanges} urlParamsMaker={this.urlParamsMaker} getContentWithParams={this.getContentWithParams}></Search>
-          <FlightBoard items={this.props.items} departures = {this.getDepartures} switchDateValue = {this.swithcesDates} flightsAccordingToDate = {this.flightsAccordingToDate} arrivals = {this.getArrivals} urlParams = {this.state.newParamsView}></FlightBoard>
+          <FlightBoard 
+          items={this.props.items}
+          departures = {this.getDepartures}
+          switchDateValue = {this.swithcesDates}
+          flightsAccordingToDate = {this.flightsAccordingToDate}
+          arrivals = {this.getArrivals}
+          urlParams = {this.state.newParamsView}></FlightBoard>
         </div>
-        </Router>
       );
     }
     return (
-      <div className="content"></div>
+      <div className="content">
+      <Preloader></Preloader>
+      </div>
     )
 
   }

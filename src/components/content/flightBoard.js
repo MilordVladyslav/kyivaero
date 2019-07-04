@@ -1,6 +1,7 @@
 import React from 'react'
 import datePicker from '../../images/date-picker.png'
 import FlightItems from './flightItems'
+import ReactCSSTransitionGroup from 'react-transition-group'
 import {
   Route,
   Link,
@@ -30,7 +31,7 @@ class FlightBoard extends React.Component {
     let day = date.getDate()
     let month = date.getMonth()
     day = day.toString().length === 1 ? `0${day}` : day
-    month = month.toString().length === 1 ? `0${month}` : month
+    month = month.toString().length === 1 ? `0${month+1}` : month+1
     this.setState({
       current: `${day}/${month}`
     })
@@ -49,7 +50,6 @@ class FlightBoard extends React.Component {
     this.props.flightsAccordingToDate(arg)
   }
   render () {
-    console.log(this.props.urlParams)
     let departuresTabClasses = this.state.activeTab === 'departures'
       ? 'tab departures departures-active'
       : 'tab departures'
@@ -110,17 +110,17 @@ class FlightBoard extends React.Component {
                 <th className="flight">Рейс</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
             <Switch>
             <Route
                 path={`/`}
                 render={({ match }) => {
                   return (
-                    <Route component={() => FlightItems(this.props.items)} />
+                      <FlightItems items = {this.props.items}></FlightItems>
                   );
                 }}
               />
-              <Route
+              {/* <Route
                 path={`departures${this.props.urlParams}`}
 
                 render={({ match }) => {
@@ -136,7 +136,7 @@ class FlightBoard extends React.Component {
                     <Route component={() => FlightItems(this.props.items)} />
                   );
                 }}
-              />
+              /> */}
             </Switch>
             </tbody>
           </table>
