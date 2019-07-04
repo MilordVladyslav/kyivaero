@@ -3,6 +3,9 @@ import logo from '../../images/logo.png'
 import Popup from './popup'
 class Header extends React.Component {
 
+  state = {
+    mobileMenu: false
+  }
   isActiveMenuItem (arg) {
       return arg === this.props.headerState.menuItemActive ? 'menu-item-active' : 'default'
   }
@@ -31,6 +34,13 @@ class Header extends React.Component {
             <div className="logo">
               <a href="/"><img src={logo} alt=""></img></a>
             </div>
+            <div className="menu__wrapper">
+                <div className="menu__item--hamburger" tabIndex="1">
+                  <div className="line"></div>
+                  <div className="line"></div>
+                  <div className="line"></div>
+                </div>
+            </div>
             <div className="menu-language">
               <div className="menu">
                 <ul>
@@ -48,6 +58,9 @@ class Header extends React.Component {
             </div>
         </header>
         {<Popup information = {this.props.headerState.popupInformation} menuItemActive = {this.props.headerState.menuItemActive} ></Popup>}
+        <div className="mobile-popup">
+          МОЯ ОБАРОНААА
+        </div>
       </div>
     )
   }
