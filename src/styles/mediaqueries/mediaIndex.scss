@@ -65,29 +65,15 @@
   .line {
     transition: all 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
-  .menu__item--hamburger {
-    &:hover,
-    &:focus {
-      .line:nth-child(1) {
-        transform: rotate(45deg) translate(10px, 6px);
-      }
-      .line:nth-child(2) {
-        visibility: hidden;
-      }
-      .line:nth-child(3) {
-        transform: rotate(-45deg) translate(9px, -4px);
-      }
-    }
-  }
-  .menu-item.open {
+  .menu-item-open {
     .line:nth-child(1) {
-      transform: rotate(45deg) translate(12px, 12px);
+      transform: rotate(45deg) translate(10px, 6px);
     }
     .line:nth-child(2) {
       visibility: hidden;
     }
     .line:nth-child(3) {
-      transform: rotate(-45deg) translate(15px, -16px);
+      transform: rotate(-45deg) translate(9px, -4px);
     }
   }
   .line {
