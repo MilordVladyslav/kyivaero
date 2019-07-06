@@ -216,7 +216,11 @@
       }
     }
   }
-
+  #tableBody.slip {
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all .3s linear;
+  }
   .flight-list {
     table {
       width: 100%;

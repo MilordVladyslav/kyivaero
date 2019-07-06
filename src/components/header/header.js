@@ -1,10 +1,7 @@
 import React from 'react'
 import logo from '../../images/logo.png'
 import Popup from './popup'
-import passengers from '../../images/passengers.svg'
-import offers from '../../images/offers.svg'
-import vip from '../../images/vip.svg'
-import partners from '../../images/partners.svg'
+import MobilePopup from './mobilePopup'
 import DetailsPopup from './detailsPopup'
 class Header extends React.Component {
 
@@ -92,24 +89,7 @@ class Header extends React.Component {
             <p><a href="/">en</a></p>
           </div>
           <DetailsPopup detailsPopup ={detailsPopup} detailsPopupItems = {this.state.detailsPopup} closeDetailsPopup = {this.closeDetailsPopup}></DetailsPopup>
-          <div className="offers">
-            <div className="offer" onClick={() => this.details('passengers')}>
-              <img src={passengers} alt=""></img>
-              <p>Пассажирам</p>
-            </div>
-            <div className="offer" onClick={() => this.details('IEV')}>
-              <img src={offers} alt=""></img>
-              <p>Услуги IEV</p>
-            </div>
-            <div className="offer" onClick={() => this.details('VIP')}>
-              <img src={vip} alt=""></img>
-              <p>VIP</p>
-            </div>
-            <div className="offer" onClick={() => this.details('partners')}>
-              <img src={partners} alt=""></img>
-              <p>Партнерам</p>
-            </div>
-          </div>
+          <MobilePopup details={this.details}></MobilePopup>
         </div>
       </div>
     )

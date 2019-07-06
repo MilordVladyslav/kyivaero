@@ -69,6 +69,15 @@
   }
 }
 @media screen and (max-width: 991px) {
+  .mobile-popup, .mobile-popup-open, .details-popup {
+    display: block;
+  }
+  .header.shadow {
+    box-shadow: none;
+  }
+  .popup-menu {
+    display: none;
+  }
   .header {
     height: 52px;
     .logo {
@@ -233,6 +242,7 @@
 }
 
 @media screen and (max-width: 765px) {
+
   .flight-board {
     .date-block {
       .icon {
@@ -343,9 +353,15 @@
       background: none;
     }
   }
+  #tableBody {
+    tr {
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
   #tableBody .time-block-mobile {
     padding-left: 10px;
-    
     tr:nth-child(odd) {
       background: none;
     }

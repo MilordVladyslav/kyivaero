@@ -190,3 +190,113 @@ div .open {
     }
   }
 }
+
+.mobile-popup {
+  display: none;
+  background: #1eb7ee;
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  padding-top: 65px;
+  box-sizing: border-box;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all .2s linear;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  .languages {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      cursor: pointer;
+      font-size: 22px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+    }
+  }
+}
+
+.mobile-popup-open {
+  display: none;
+  visibility: visible;
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all .2s linear;
+}
+
+
+.offers {
+  margin-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .offer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 47%;
+    height: 125px;
+    border: 2px solid white;
+    border-radius: 10px;
+    border-top-right-radius: 30px;
+    p {
+      margin-top: 10px;
+    }
+  }
+}
+
+.details-popup {
+  display: none;
+  height: 100%;
+  width: 100%;
+  margin-top: 20px;
+  background: white;
+  position: absolute;
+  padding: 25px 50px;
+  line-height: 2;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all .2s linear;
+  .close {
+    position: absolute;
+    top: -50px;
+    left: 30px;
+    color: #1eb7ee;
+    font-weight: bold;
+    font-size: 18px;
+    background: white;
+    border: white;
+    padding: 7px 15px 7px 25px;
+    border-top-left-radius: 30px;
+    cursor: pointer;
+  }
+  .close:focus {
+    outline: none;
+    border: none;
+  }
+  a {
+    font-weight: bold;
+    color: #1eb7ee;
+    text-decoration: none;
+  }
+}
+
+.details-popup-open {
+  visibility: visible;
+  transform: translateY(0px);
+  opacity: 1;
+  transition: all .2s linear;
+}

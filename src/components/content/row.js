@@ -89,7 +89,7 @@ const Row = (props) => {
         <a href="/">Детали рейса</a>
       </div>
       <div className="flight-details-mobile">
-        <a href="/"><img src={arrowRight}></img></a>
+        <a href="/"><img src={arrowRight} alt=""></img></a>
       </div>
     </td>
   </tr>
