@@ -91,7 +91,7 @@ class Header extends React.Component {
             <p><a href="/">ru</a></p>
             <p><a href="/">en</a></p>
           </div>
-          <DetailsPopup detailsPopup ={detailsPopup} closeDetailsPopup = {this.closeDetailsPopup}></DetailsPopup>
+          <DetailsPopup detailsPopup ={detailsPopup} detailsPopupItems = {this.state.detailsPopup} closeDetailsPopup = {this.closeDetailsPopup}></DetailsPopup>
           <div className="offers">
             <div className="offer" onClick={() => this.details('passengers')}>
               <img src={passengers} alt=""></img>

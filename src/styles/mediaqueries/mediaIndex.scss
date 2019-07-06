@@ -1,4 +1,4 @@
-@media screen and (min-width: 991px) and (max-width: 1199px) {
+@media screen and (min-width: 992px) and (max-width: 1199px) {
   .header {
     .logo {
       margin-top: 22px;
@@ -7,7 +7,6 @@
       }
       margin-left: 10px;
     }
-
   }
   div.open {
     transform: translateY(80px);
@@ -29,8 +28,47 @@
       }
     }
   }
+  .flight-board {
+    width: 960px;
+    margin: auto;
+    margin-top: 38px;
+    .tabs .tab {
+      width: 508.5px;
+    }
+  }
+  .content {
+    width: 960px;
+    box-sizing: border-box;
+    .flight-list {
+      table {
+        thead {
+          th {
+            padding-left: 0;
+          }
+          th:first-child {
+            padding-left: 10px;
+          }
+          .status {
+            padding-right: 55px;
+          }
+        }
+        .flight-details {
+          margin: 0 12.3px;
+        }
+        .airline-name li{
+          padding-right: 0;
+        }
+      }
+    }
+  }
+  footer {
+    .container {
+      width: 962px;
+      padding-left: 6px;
+    }
+  }
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 991px) {
   .header {
     height: 52px;
     .logo {
@@ -43,8 +81,119 @@
       display: none;
     }
   }
-  .content, footer {
-    display: none;
+  .content {
+    width: 100%;
+    .search-block {
+      width: 561px;
+      .title {
+        font-size: 60px;
+      }
+      .search-input {
+        width: 360px;
+        font-size: 20px;
+      }
+      .form-wrapper {
+        height: 55px;
+      }
+      .submit {
+        font-size: 18px;
+        padding-right: 41px;
+      }
+      .magnifier {
+        width: 55px;
+        height: 55px;
+        background-position: 11px 12px;
+      }
+    }
+    .flight-board {
+      width: 100%;
+      border-radius: 0;
+      margin-top: 114px;
+    }
+    .date-block {
+      margin-top: 13px;
+    }
+    .tabs {
+      top: -60px;
+      width: 759px;
+      margin: auto;
+      .tab {
+        width: 363px;
+      }
+      .tab.departures {
+        left: 51px;
+      }
+      .tab.arrivals {
+        right: 41px;
+      }
+    }
+  }
+  .content {
+    .flight-list {
+      table {
+        thead {
+          font-size: 12px;
+          th {
+            padding-left: 0;
+            padding-right: 0;
+          }
+          .terminal {
+            width: 12%;
+          }
+          .time {
+            width: 10%;
+          }
+          .destination, .status, .airline, .flight {
+            padding-right: 0;
+            width: 10% ;
+          }
+          .destination {
+            width: 20%;
+          }
+          .status {
+            width: 12%;
+          }
+        }
+        tbody {
+          td {
+            padding-left: 0;
+          }
+          .airline-name li {
+            padding-right: 5%;
+          }
+          .flight-details {
+            display: none;
+          }
+          .flight-details-mobile {
+            display: block;
+            margin-left: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .container {
+      width: 740px;
+      padding-left: 27px;
+    }
+    .information-blocks {
+      flex-wrap: wrap;
+    }
+    .information {
+      width: 228px;
+    }
+    .information.reference {
+      display: flex;
+      width: 100%;
+      .call-us-wrapper {
+        margin-right: 100px;
+      }
+    }
+    .captions-info {
+      flex-direction: column;
+    }
   }
   .menu__wrapper {
     margin-top: 10px;
@@ -81,4 +230,234 @@
     width: 45px;
     background: #fff;
   }
+}
+
+@media screen and (max-width: 765px) {
+  .flight-board {
+    .date-block {
+      .icon {
+        margin-left: 7px;
+      }
+      .switches {
+        margin-left: 20px;
+        .line-bottom {
+          width: 85%;
+        }
+        .switch {
+          width: 85px;
+          .day {
+            font-size: 12px;
+          }
+        }
+
+      }
+    }
+
+    .tabs {
+      width: 100%;
+      .tab {
+        width: 55%;
+      }
+      .tab.departures {
+        left: 0;
+        border-top-left-radius: 0;
+        .direction {
+          text-align: left;
+          font-size: 16px;
+          margin-left: 50px;
+          margin-top: 24px;
+          &::before{
+            background-size: 30px;
+            width: 30px;
+            height: 30px;
+            left: 10px;
+            top: 22px;
+          }
+        }
+      }
+      .tab.arrivals {
+        right: 0;
+        border-top-right-radius: 0;
+        .direction {
+          margin-left: 0;
+          text-align: right;
+          font-size: 16px;
+          margin-right: 50px;
+          margin-top: 24px;
+          &::before {
+            display: none;
+          }
+          &::after {
+            content: '';
+            background: url('../images/aircraftDownWhite.png') no-repeat;
+            background-size: 30px;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 10px;
+            top: 22px;
+          }
+        }
+      }
+      .tab.arrivals-active {
+        .direction {
+          &::after {
+            background: url('../images/aircraftDown.png') no-repeat;
+            background-size: 30px;
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+
+
+  .mobile-only {
+    display: table-cell;
+  }
+  thead {
+    display: none;
+  }
+  .airline-name {
+    .name {
+      display: none;
+    }
+  }
+  .destination-block-mobile {
+    .airline-name {
+      li {
+        .details {
+          .logo {
+            width: 43px;
+          }
+        }
+      }
+    }
+    tr:nth-child(odd) {
+      background: none;
+    }
+  }
+  .flight-board .flight-list .destination-block-mobile {
+    tr:nth-child(odd) {
+      background: none;
+    }
+  }
+  #tableBody .time-block-mobile {
+    padding-left: 10px;
+    
+    tr:nth-child(odd) {
+      background: none;
+    }
+    .flight-name {
+      li {
+        font-size: 14px;
+        color: gray;
+        padding-bottom: 5px;
+      }
+    }
+  }
+  .status-block {
+    span {
+      display: none;
+    }
+    .mobile-only {
+      padding: 20px;
+      position: relative;
+      top: 40px;
+      right: 12%;
+    }
+  }
+  .search-block {
+    display: none;
+  }
+  .flight-board .flight-list tbody {
+    .destination-block-mobile, .time-block-mobile {
+      td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+  tbody {
+    td {
+      width: 10%;
+    }
+
+    .company, .flight-name-block, .flight-details-block {
+      display: none;
+    }
+  }
+  .empty {
+    height: 16px;
+  }
+  .flight-board .flight-list tbody td {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .terminal-block {
+    display: none;
+  }
+  .time-block {
+    display: none;
+  }
+  .destination-block {
+    display: none;
+  }
+
+  .information-blocks {
+    flex-direction: column;
+  }
+  footer {
+    padding-top: 6px;
+  }
+  .information-blocks {
+    .information {
+      width: 100%;
+      padding-top: 10px;
+      .title {
+        padding-bottom: 20px;
+      }
+    }
+  }
+
+  footer {
+    .container {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+
+  .accordion {
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    outline: none;
+
+    transition: 0.4s;
+    border-bottom: 1px solid white;
+  }
+  .panel {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+  .information.reference {
+    flex-direction: column;
+    margin-top: 30px;
+    .call-us-wrapper {
+      .title {
+        padding-bottom: 0;
+      }
+    }
+  }
+  .captions {
+    flex-direction: column;
+    .info {
+      margin-bottom: 15px;
+    }
+  }
+
 }

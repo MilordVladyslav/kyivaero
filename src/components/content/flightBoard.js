@@ -102,8 +102,8 @@ class FlightBoard extends React.Component {
           <table>
             <thead>
               <tr>
-                <th>Терминал</th>
-                <th>Время</th>
+                <th className="terminal">Терминал</th>
+                <th className="time">Время</th>
                 <th className="destination">Место назначения</th>
                 <th className="status">Статус</th>
                 <th className="airline">Авиакомпания</th>
