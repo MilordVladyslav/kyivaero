@@ -59,6 +59,9 @@ class FlightBoard extends React.Component {
     if (this.state.current === this.state.today) statusLineClasses = 'status-line center'
     if (this.state.current === this.state.yesterday) statusLineClasses = 'status-line left'
     if(this.state.current === this.state.tomorrow) statusLineClasses = 'status-line right'
+    let results = this.props.items.length
+    ? <Table items = {this.props.items}></Table>
+    : <NoFlights></NoFlights>
     return (
       <div className="flight-board">
         <div className="tabs">
@@ -98,35 +101,45 @@ class FlightBoard extends React.Component {
           </div>
         </div>
         <div className="flight-list">
-          <table>
-            <thead>
-              <tr>
-                <th className="terminal">Терминал</th>
-                <th className="time">Время</th>
-                <th className="destination">Место назначения</th>
-                <th className="status">Статус</th>
-                <th className="airline">Авиакомпания</th>
-                <th className="flight">Рейс</th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-            <Switch>
-            <Route
-                path={`/`}
-                render={({ match }) => {
-                  return (
-                      <FlightItems items = {this.props.items}></FlightItems>
-                  );
-                }}
-              />
-            </Switch>
-            </tbody>
-          </table>
+          {results}
         </div>
       </div>
     )
   }
 }
+
+const NoFlights = () => (
+  <div className="no-flights">
+    <p>Нет рейсов</p>
+  </div>
+)
+
+const Table = (props) => (
+  <table>
+    <thead>
+      <tr>
+        <th className="terminal">Терминал</th>
+        <th className="time">Время</th>
+        <th className="destination">Место назначения</th>
+        <th className="status">Статус</th>
+        <th className="airline">Авиакомпания</th>
+        <th className="flight">Рейс</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody">
+    <Switch>
+    <Route
+        path={`/`}
+        render={({ match }) => {
+          return (
+              <FlightItems items = {props.items}></FlightItems>
+          );
+        }}
+      />
+    </Switch>
+    </tbody>
+  </table>
+)
 
 
 export default FlightBoard
