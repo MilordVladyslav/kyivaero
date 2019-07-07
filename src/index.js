@@ -4,13 +4,11 @@ import './index.css';
 import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
-import { createBrowserHistory } from "history";
 import store from './state-management/store'
 import { Provider } from 'react-redux';
-const customHistory = createBrowserHistory();
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter history={customHistory}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,

@@ -3,10 +3,11 @@ import FlightName from './flightName'
 import AirlineDetails from './airlineDetails'
 import arrowRight from '../../images/arrow-right.png'
 const Row = (props) => {
+  const terminalClasses = props.item.term === "A" ? 'terminal green' : 'terminal blue'
   return (
   <tr>
     <td className="terminal-block">
-      <div className="terminal">{props.item.term}</div>
+      <div className={terminalClasses}>{props.item.term}</div>
     </td>
     <td className="time-block">
       {props.item.timeDepShedule || props.item.timeArrShedule}
@@ -17,8 +18,8 @@ const Row = (props) => {
           <tr>
             <td>{props.item.timeDepShedule || props.item.timeArrShedule}</td>
           </tr>
-          <tr>
-            <td>2</td>
+          <tr className="empty">
+            <td></td>
           </tr>
           <tr>
             <td>

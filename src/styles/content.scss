@@ -258,11 +258,17 @@
         font-size: 16px;
         padding-left: 10px;
       }
+      .green {
+        color: #63c745;
+        border: 1px solid #63c745;
+      }
+      .blue {
+        color: #1eb7ee;
+        border: 1px solid #1eb7ee;
+      }
       .terminal {
         font-size: 22px;
-        border: 1px solid #63c745;
         margin-left: 23px;
-        color: #63c745;
         width: 39px;
         height: 39px;
         position: relative;

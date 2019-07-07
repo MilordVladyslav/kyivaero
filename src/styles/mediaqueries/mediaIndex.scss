@@ -428,7 +428,7 @@
     }
   }
   .empty {
-    height: 16px;
+    height: 55px;
   }
   .flight-board .flight-list tbody td {
     padding-top: 25px;
@@ -447,9 +447,7 @@
   .information-blocks {
     flex-direction: column;
   }
-  footer {
-    padding-top: 6px;
-  }
+
   .information-blocks {
     .information {
       width: 100%;
@@ -461,6 +459,7 @@
   }
 
   footer {
+    padding-top: 6px;
     .container {
       width: 100%;
       padding-left: 10px;
