@@ -34,7 +34,6 @@ function headerReducer (state = initialState, action) {
         currentLanguage: action.value
       }
     }
-      break;
     default: {
       return state;
     }
@@ -56,8 +55,4 @@ function popupInformation (menuItemActive) {
       }
     }
 }
-// isActiveMenuItem (arg) {
-//   console.log(this.props.headerState.menuItemActive)
-//     return arg === this.props.headerState.menuItemActive ? 'menu-item-active' : 'default'
-// }
 export default headerReducer

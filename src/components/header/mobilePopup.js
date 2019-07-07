@@ -26,4 +26,3 @@ const MobilePopup = (props) => (
 )
 
 export default MobilePopup
-

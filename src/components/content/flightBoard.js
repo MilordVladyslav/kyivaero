@@ -1,7 +1,6 @@
 import React from 'react'
 import datePicker from '../../images/date-picker.png'
 import FlightItems from './flightItems'
-import ReactCSSTransitionGroup from 'react-transition-group'
 import {
   Route,
   Link,
@@ -120,23 +119,6 @@ class FlightBoard extends React.Component {
                   );
                 }}
               />
-              {/* <Route
-                path={`departures${this.props.urlParams}`}
-
-                render={({ match }) => {
-                  return (
-                    <Route path='/departures' component={() => FlightItems(this.props.items)} />
-                  );
-                }}
-              />
-              <Route
-                path={`/arrivals${this.props.urlParams}`}
-                render={({ match }) => {
-                  return (
-                    <Route component={() => FlightItems(this.props.items)} />
-                  );
-                }}
-              /> */}
             </Switch>
             </tbody>
           </table>

@@ -243,6 +243,32 @@
 
 @media screen and (max-width: 765px) {
 
+  .content {
+    .search-block {
+      width: 100%;
+      .title {
+        font-size: 36px;
+        margin-left: 10px;
+      }
+    }
+  }
+
+  .content {
+    .form-wrapper {
+      width: 100%;
+      form {
+        width: 100%;
+        .search-input {
+          width: 100%;
+        }
+      }
+      .submit {
+        display: none;
+      }
+    }
+  }
+
+
   .flight-board {
     .date-block {
       .icon {
@@ -383,9 +409,6 @@
       top: 40px;
       right: 12%;
     }
-  }
-  .search-block {
-    display: none;
   }
   .flight-board .flight-list tbody {
     .destination-block-mobile, .time-block-mobile {

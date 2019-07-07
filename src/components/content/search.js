@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import urlParamsMaker from '../../helpers/urlMaker'
 class Search extends React.Component {
   state = {

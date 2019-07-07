@@ -1,6 +1,5 @@
 import React from 'react'
 import Row from './row'
-import ReactCSSTransitionGroup from 'react-transition-group'
 class FlightItems extends React.Component{
   componentWillReceiveProps() {
       document.getElementById('tableBody').classList.add('slip')

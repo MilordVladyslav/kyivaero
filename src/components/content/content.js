@@ -1,8 +1,6 @@
 import React from 'react'
 import FlightBoard from './flightBoard'
 import Search from './search'
-import {Route} from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom';
 import urlParamsMaker from '../../helpers/urlMaker'
 import Preloader from './preloader'
 class Content extends React.Component {
@@ -36,7 +34,6 @@ class Content extends React.Component {
     let year = date.getFullYear();
     day = day.toString().length === 1 ? `0${day}` : day
     month = month.toString().length === 1 ? `0${month+1}` : month+1
-    console.log(`${day}-${month}-${year}`)
     return `${day}-${month}-${year}`
   }
   getDepartures = () => {
@@ -96,7 +93,6 @@ class Content extends React.Component {
     } else this.props.getApiData(this.props.mark, this.formateDate(arg))
   }
   getContentWithParams = (newParams) => {
-    let key = Object.keys(newParams)[0]
     let search = newParams[0].find((item) => (
       item['search']
     ))
@@ -112,7 +108,7 @@ class Content extends React.Component {
       return (
         <div className="content">
           <Search applyParamsChanges={this.applyParamsChanges} urlParamsMaker={this.urlParamsMaker} getContentWithParams={this.getContentWithParams}></Search>
-          <FlightBoard 
+          <FlightBoard
           items={this.props.items}
           departures = {this.getDepartures}
           switchDateValue = {this.swithcesDates}
