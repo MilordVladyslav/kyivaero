@@ -5,7 +5,7 @@
 .header {
   width: 100%;
   height: 90px;
-  background-color: #1eb7ee;
+  background-color: $blue;
   position: fixed;
   z-index: 4;
   display: flex;
@@ -37,7 +37,7 @@
     .menu-item-active {
       border-top-right-radius: 30px;
       background: linear-gradient(to right, #1eb7ee, white);
-      color:#008ab7;
+      color:$blue;
     }
   }
   .language {
@@ -59,7 +59,7 @@
     z-index: 2;
     display: block;
     position: relative;
-    background: #1eb7ee;
+    background: $blue;
     color: white;
     top: 33px;
     height: 200px;
@@ -71,7 +71,7 @@
       font-weight: normal;
       transition: background-color .3s;
       &:hover {
-        background-color: #46c5f3;
+        background-color: $blue;
         transition: background-color .3s;
       }
       &:last-child {
@@ -149,8 +149,8 @@ div .open {
       a {
         display: inline-block;
         font-weight: bold;
-        color: #1eb7ee;
-        border: 2px solid #1eb7ee;
+        color: $blue;
+        border: 2px solid $blue;
         text-decoration: none;
         margin-top: 18px;
         padding: 9px 20px;
@@ -165,7 +165,7 @@ div .open {
     .information {
       h4 {
         font-size: 18px;
-        color: #1eb7ee;
+        color: $blue;
         font-weight: bold;
         margin-bottom: 24px;
       }
@@ -173,12 +173,12 @@ div .open {
         margin-bottom: 19.06px;
         a {
           font-size: 16px;
-          color: #1eb7ee;
+          color: $blue;
           text-decoration: none;
           border-bottom: 1px solid transparent;
           transition: border-bottom .3s;
           &:hover {
-            border-bottom: 1px solid #1eb7ee;
+            border-bottom: 1px solid $blue;;
             transition: border-bottom .5s;
           }
         }
@@ -274,7 +274,7 @@ div .open {
     position: absolute;
     top: -50px;
     left: 30px;
-    color: #1eb7ee;
+    color: $blue;;
     font-weight: bold;
     font-size: 18px;
     background: white;
@@ -289,7 +289,7 @@ div .open {
   }
   a {
     font-weight: bold;
-    color: #1eb7ee;
+    color: $blue;;
     text-decoration: none;
   }
 }

@@ -42,7 +42,7 @@
     border: none;
     border-top-right-radius: 80px;
     transition: border-top-right-radius .3s;
-    background-color: #1eb7ee;
+    background-color: $blue;
     cursor: pointer;
     &:hover {
       border-top-right-radius: 40px;
@@ -74,11 +74,11 @@
       width: 586.5px;
       height: 60px;
       position: absolute;
-      background-color: #73d2f0;
+      background-color: $blue;
       transition: background-color .3s;
       cursor: pointer;
       &:hover {
-        background-color:#1eb7ee;
+        background-color: $blue;
         transition: background-color .3s;
       }
     }
@@ -112,7 +112,7 @@
         background: white;
       }
       .direction {
-        color: #1eb7ee;
+        color: $blue;
         &::before {
           background: url('../images/aircraftUp.png') no-repeat;
         }
@@ -148,7 +148,7 @@
         background: white;
       }
       .direction {
-        color: #1eb7ee;
+        color: $blue;
         &::before {
           background: url('../images/aircraftDown.png') no-repeat;
         }
@@ -165,7 +165,7 @@
       .current-date {
         font-size: 13px;
         font-weight: bold;
-        color: #1eb7ee;
+        color: $blue;
       }
     }
     .switches {
@@ -192,7 +192,7 @@
         }
       }
       .active {
-        color: #1eb7ee;
+        color: $blue;
       }
       .line-bottom {
         width: 100%;
@@ -200,7 +200,7 @@
         background: #b8b9b9;
       }
       .status-line {
-        background:#1eb7ee;
+        background:$blue;
         width: 33.5%;
         height: 3px;
         transition: transform .2s linear;
@@ -263,8 +263,8 @@
         border: 1px solid #63c745;
       }
       .blue {
-        color: #1eb7ee;
-        border: 1px solid #1eb7ee;
+        color: $blue;
+        border: 1px solid $blue;
       }
       .terminal {
         font-size: 22px;
@@ -292,7 +292,7 @@
         background: rgba(0,102,135,.1);
       }
       .flight-details {
-        border-bottom: 1px solid #1eb7ee;
+        border-bottom: 1px solid $blue;
         padding-bottom: 3px;
         margin: 0 34.3px;
         padding-right: 1px;
@@ -301,7 +301,7 @@
         width: 120px;
         a {
           font-size: 18px;
-          color: #1eb7ee;
+          color: $blue;
           text-decoration: none;
         }
       }
