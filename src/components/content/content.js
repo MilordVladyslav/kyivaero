@@ -23,7 +23,7 @@ class Content extends React.Component {
     day = day.toString().length === 1 ? `0${day}` : day
     month = month.toString().length === 1 ? `0${month}` : month
     return `${day}/${month}`
-  }
+  } // ці дві функції майже ідентичні, чому б не об'єднати в одну?
   formateDate = (arg) => {
     let date = new Date();
     if(arg) {
@@ -38,7 +38,7 @@ class Content extends React.Component {
   }
   getDepartures = () => {
     let search = ''
-    try{
+    try{ // замість try-catch варто або робити перевірки, або використовувати функції які безпечно дістають дані
       search = this.state.newParams.find((item) => (
         item['search']
       ))
@@ -50,7 +50,7 @@ class Content extends React.Component {
     } else {
       this.props.departures()
     }
-  }
+  } // знову майже ідентичні методи
   getArrivals = () => {
     let search = ''
     try{

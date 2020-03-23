@@ -7,7 +7,7 @@ import smplLogo from '../../images/smplLogo.png'
 class Footer extends React.Component {
   componentDidMount() {
     let acc = document.getElementsByClassName("accordion");
-
+// знову таки, ні в якому разі не працюємо з ДОМ напряму. Ми так ускладнюємо життя Реакту
     for (let i = 0; i < acc.length; i++) {
       acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
